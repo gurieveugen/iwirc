@@ -2,7 +2,6 @@
 /**
  * The template for displaying all pages. 
  */
-
 get_header(); ?>
 
     <div class="img-top-page cf">

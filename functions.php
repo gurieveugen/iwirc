@@ -460,3 +460,39 @@ function short_content($content,$sz = 500,$more = '...') {
         if (!$p) return $content;
 	return substr($content, 0, $p).$more;
 }
+
+function wrapContent($p)
+{
+	ob_start();
+	?>
+	<article id="post-<?php echo $p->ID; ?>" class="blog-post cf">
+    
+        <?php if ( has_post_thumbnail($p->ID) && ! post_password_required($p->ID) ) : ?>
+            <figure><?php echo get_the_post_thumbnail($p->ID); ?></figure>
+            <div class="txt">
+        <?php endif; ?>
+        
+        <?php if ( is_single($p->ID) ) : ?>
+        						
+            <h1><?php echo $p->post_title; ?></h1>
+            <?php echo get_the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentythirteen' ) );  ?>
+                <?php wp_link_pages( array( 'before' => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentythirteen' ) . '</span>', 'after' => '</div>', 'link_before' => '<span>', 'link_after' => '</span>' ) ); ?>
+				
+        <?php else : ?>
+				
+            <h2><a href="<?php echo get_permalink($p->ID); ?>" rel="bookmark"><?php echo $p->post_title; ?></a></h2>
+            <div class="ex"><?php echo wp_trim_excerpt($p->post_content); ?></div>					
+            <a href="<?php echo get_permalink($p->ID); ?>" class="more">SEE MORE</a>
+            	
+        <?php endif; // is_single() ?>
+
+        <?php if ( has_post_thumbnail($p->ID) && ! post_password_required($p->ID)) : ?>			
+            </div>
+        <?php endif; ?>
+        
+	</article>
+	<?php
+	$var = ob_get_contents();
+	ob_end_clean();
+	return $var;
+}
