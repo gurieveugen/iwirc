@@ -21,7 +21,7 @@
                 <?php else : ?>
 						
                     <h2><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
-                    <div class="ex"><?php the_excerpt(); ?></div>					
+                    <div class="ex"><?php the_content(' '); ?></div>					
                     <a href="<?php the_permalink(); ?>" class="more">SEE MORE</a>
                     	
                 <?php endif; // is_single() ?>
