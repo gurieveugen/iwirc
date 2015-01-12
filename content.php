@@ -8,7 +8,7 @@
 			<article id="post-<?php the_ID(); ?>" class="blog-post <?php if ( is_single() ) : ?>single <?php endif; ?> cf">
             
                 <?php if ( has_post_thumbnail() && ! post_password_required() ) : ?>
-                    <figure><?php the_post_thumbnail(); ?></figure>
+                    <figure><img src="<?php echo get_thumb(get_post_thumbnail_id(), 207, 99999, false); ?>" alt="Image"></figure>
                     <div class="txt">
                 <?php endif; ?>
                 

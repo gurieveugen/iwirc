@@ -4,7 +4,7 @@ function theme_options_page_init() {
 	$options_page = add_theme_page(
 		'Theme Options',
 		'Theme Options',
-		8,
+		'edit_others_posts',
 		'theme-options',
 		'theme_options_page'
 	);
